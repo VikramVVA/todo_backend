@@ -17,18 +17,20 @@ var tasksController = {
 
     createTask: async function (req, res, next) {
         try {
-            const { taskName, taskCreateDate, description } = matchedData(req, {
+            const { taskName, description } = matchedData(req, {
                 includeOptionals: false,
                 onlyValidData: true,
                 locations: ["body"],
             });
 
-            const date = new Date(taskCreateDate);
+            const date = new Date();
+            date.setHours(date.getHours() + 5, date.getMinutes() + 30);
             // Format the date to be compatible with MySQL (YYYY-MM-DD HH:MM:SS)
             const formattedDate = date
                 .toISOString()
                 .slice(0, 19)
                 .replace("T", " ");
+
             let newTask = {
                 taskName: taskName,
                 taskCreateDate: formattedDate,
@@ -56,13 +58,14 @@ var tasksController = {
 
     completeTask: async function (req, res, next) {
         try {
-            const { id, taskCompleteDate } = matchedData(req, {
+            const { id } = matchedData(req, {
                 includeOptionals: false,
                 onlyValidData: true,
                 locations: ["body"],
             });
 
-            const date = new Date(taskCompleteDate);
+            const date = new Date();
+            date.setHours(date.getHours() + 5, date.getMinutes() + 30);
             // Format the date to be compatible with MySQL (YYYY-MM-DD HH:MM:SS)
             const formattedDate = date
                 .toISOString()
