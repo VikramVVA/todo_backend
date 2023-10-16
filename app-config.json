@@ -1,0 +1,16 @@
+[
+    {
+        "env": "dev",
+        "projectName": "TODO",
+        "projectId": "todoapp",
+        "url": "http://localhost",
+        "port": 8088,
+        "userSecret": "",
+        "db_host":"localhost", 
+        "db_userName":"root",
+        "db_password":"",
+        "db_port":3306,
+        "db":"todo_backend",
+        "dialect":"mysql"
+    }
+]
