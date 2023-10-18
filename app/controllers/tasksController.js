@@ -4,7 +4,7 @@ const { matchedData } = require("express-validator");
 var tasksController = {
     list: async function (req, res, next) {
         try {
-            const data = await TasksModel.findAll();
+            const data = await TasksModel.findAll({order: [['createdAt', 'ASC']]});
             res.json({
                 success: 1,
                 data: data,
